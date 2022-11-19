@@ -1,4 +1,3 @@
-# from https://pypi.org/project/python-nmap/
 # Path: Nmap.py
 # Compare this snippet from main.py:
 # #!/bin/env/python3.10
