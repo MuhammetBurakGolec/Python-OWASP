@@ -8,7 +8,7 @@ import subprocess
 
 
 class scannmap:
-    def __init__(self, target, port='1-65535',request='sudo', options='-sU -sT -sV -O -p'):
+    def __init__(self, target, port, request='sudo', options='-sU -sT -sV -O -p'):
         self.target = target
         self.port = port
         self.request = request
@@ -24,11 +24,14 @@ class scannmap:
             print("Please enter a target")
             sys.exit(1)
 
+        elif (self.port.lower == "all" ):
+            self.port = "1-65535"
+
         elif (self.port == None):
             print("Please enter a port")
             sys.exit(1)
 
-        elif (self.options != None):
+        elif (self.options != None)
             print("Options Set")
             print(self.request,'nmap' ,self.target,self.options, self.port)
             return subprocess.call([self.request,'nmap' ,self.target,self.options, self.port])
