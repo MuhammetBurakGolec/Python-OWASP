@@ -10,7 +10,10 @@ import subprocess
 class scannmap:
     def __init__(self, target: str, port: str, request: str, options :str):
         self.target = target
-        self.port = port
+        if port.lower == "all" or port == None:
+            self.port = "1-65535"
+        else:
+            self.port = port
         self.request = request
         self.options = options
         self.dict = { "target": self.target, "port": self.port, "request": self.request, "options": self.options}
@@ -20,12 +23,9 @@ class scannmap:
             print("Please enter a target")
             sys.exit(1)
 
-        elif (self.target == '127.0.1.1' or self.target == 'localhost'):
+        elif (self.target == '127.0.0.1' or self.target == 'localhost'):
             print("Please enter a target")
             sys.exit(1)
-
-        elif (self.port.lower == "all" ):
-            self.port = "1-65535"
 
         elif (self.port == None):
             print("Please enter a port")
@@ -33,36 +33,33 @@ class scannmap:
         
         elif (self.options != None):
             print("Options Set")
-        
-        else:
             self.scan_approuved = True
             print("Scan Approuved")
+
+        else:
+            print("Please enter a option")
+            print("Scan Not Approuved")
 
     def scan(self):
         if (self.scan_approuved == True):
 
             print(self.request,'nmap' ,self.target,self.options, self.port)
-
+            value =f"{self.request} nmap {self.target} {self.options} {self.port} -oX nmap.xml"
             try:
-                Scan_Value = subprocess.call([self.request,'nmap' ,self.target,self.options, self.port])
-                Scan_Value = str(Scan_Value)
-                print(Scan_Value)
-                return Scan_Value, self.dict
+                subprocess.call([value,], shell=True)
+                return self.dict
 
             except subprocess.CalledProcessError as e:
                 print("Error: ", e.output)
-                sys.exit(1)
+                sys.exit(1)     
 
-            else:
-                print("Unexpected error:", sys.exc_info()[0])
-                sys.exit(0)            
-            
             finally:
                 print("Scan PID Completed")
 
         else:
-            print("OPTIONS NOT SET")
+            print("Options not set")
 
     def scan_script(self):
+
         pass
         
