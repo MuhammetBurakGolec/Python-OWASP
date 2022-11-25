@@ -1,0 +1,16 @@
+{
+    "host":
+    {
+        "__comment_target":"target parameters need to be set to the target ip, not domain name",
+        "target":"192.168.0.0-50",
+        
+        "__comment_port":"write which you want to scan, default is all 1-65535",
+        "port":"1-1023",
+    
+        "__comment_request":"two typs of request, [sudo] or [] <- empyt",
+        "request":"sudo",
+        
+        "__comment_options":"options for nmap, example:  [-sV -sC -Pn -T4 -p]",
+        "options":"-sV -sC -Pn -T4 -p"
+    }
+}
