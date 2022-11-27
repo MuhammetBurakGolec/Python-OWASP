@@ -1,0 +1,1 @@
+# This place will contain converting version of same nmap result for analys
