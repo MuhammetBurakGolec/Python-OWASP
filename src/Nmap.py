@@ -44,7 +44,7 @@ class scannmap:
         if (self.scan_approuved == True):
 
             print(self.request,'nmap' ,self.target,self.options, self.port)
-            value =f"{self.request} nmap {self.target} {self.options} {self.port} -oX nmap.xml"
+            value =f"{self.request} nmap {self.target} {self.options} {self.port} -oX ../tmp/nmap.xml"
             try:
                 subprocess.call([value,], shell=True)
                 return self.dict
