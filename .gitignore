@@ -6,6 +6,21 @@ __pycache__/
 # C extensions
 *.so
 
+# Developing Files
+*nmap*.json
+nmap.xml
+nmap.gnmap
+nmap.html
+nmap.xsl
+nmap.xslt
+nmap.dtd
+nmap.rng
+nmap.rnc
+nmap.xsd
+
+
+
+
 # Distribution / packaging
 .idea/
 .Python
