@@ -7,7 +7,7 @@ def main():
     print(target, port, request, options)
     nmap = Nmap.scannmap(target=f"{target}",port=f"{port}",request=f"{request}",options=f"{options}") # Change this to your needs
     data = nmap.scan()
-    Convert.xml_to_json(xml="../tmp/nmap.xml",output='../nmap_result/nmap.json')
+    Convert.xml_to_json(xml="nmap.xml",output='/tmp/nmap.json')
     #Convert.json_to_data_json(path='../nmap_result/nmap.json',output='../nmap_result/nmap_responde.json')
 
 def input_data():

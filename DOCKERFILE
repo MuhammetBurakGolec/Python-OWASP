@@ -1,0 +1,20 @@
+FROM --platform=arm64 ubuntu:latest
+
+RUN apt-get update && apt-get upgrade -y && apt-get install -y \
+    nmap \
+    python3 \
+    python3-pip \ 
+    net-tools -y \
+    iputils-ping -y \
+    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install --upgrade pip
+RUN pip3 install --upgrade setuptools
+RUN pip3 install --upgrade wheel
+COPY requirements.txt /tmp/requirements.txt
+RUN pip install -r /tmp/requirements.txt
+
+COPY . /app
+WORKDIR /app/src/
+RUN python3 main.py
+CMD cat /tmp/nmap.json
+

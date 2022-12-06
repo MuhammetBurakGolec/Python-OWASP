@@ -39,14 +39,16 @@ class scannmap:
         else:
             print("Please enter a option")
             print("Scan Not Approuved")
+            sys.exit(1)
 
     def scan(self):
         if (self.scan_approuved == True):
 
-            print(self.request,'nmap' ,self.target,self.options, self.port)
-            value =f"{self.request} nmap {self.target} {self.options} {self.port} -oX ../tmp/nmap.xml"
+            value =f"{self.request} nmap {self.target} {self.options} {self.port} -oX nmap.xml"
+            print(value)
             try:
                 subprocess.call([value,], shell=True)
+                print("PID Started")
                 return self.dict
 
             except subprocess.CalledProcessError as e:
@@ -54,7 +56,7 @@ class scannmap:
                 sys.exit(1)     
 
             finally:
-                print("Scan PID Completed")
+                print("PID Completed")
 
         else:
             print("Options not set")
